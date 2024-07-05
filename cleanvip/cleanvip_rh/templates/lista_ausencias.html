@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ausencias de {{ colaborador.nombre }}</title>
+  </head>
+<body>
+  <h1>Ausencias de {{ colaborador.nombre }}</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Fecha de Ausencia</th>
+        <th>Tipo de Ausencia</th>
+        <th>Motivo de la Ausencia (si se proporcionó)</th>
+        <th>Estado de Aprobación (si aplica)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for ausencia in ausencias %}
+      <tr>
+        <td>{{ ausencia.fecha }}</td>
+        <td>{{ ausencia.tipo_ausencia }}</td>
+        <td>{{ ausencia.motivo }}</td>
+        <td>{{ ausencia.estado_aprobacion }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
+</html>

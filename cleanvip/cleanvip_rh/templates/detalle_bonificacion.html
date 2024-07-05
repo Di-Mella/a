@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Detalle de Bonificación: {{ bonificacion.descripcion }}</title>
+  </head>
+<body>
+  <h1>Detalle de Bonificación</h1>
+  <ul>
+    <li>Tipo de Bonificación: {{ bonificacion.tipo }}</li>
+    <li>Monto: {{ bonificacion.monto }}</li>
+    <li>Fecha Otorgada: {{ bonificacion.fecha_otorgada }}</li>
+    <li>Motivo de la Bonificación: {{ bonificacion.motivo }}</li>
+    <li>Colaborador Asociado: {{ bonificacion.colaborador.nombre }}</li>
+  </ul>
+</body>
+</html>
+

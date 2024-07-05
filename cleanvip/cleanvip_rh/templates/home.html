@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Estilos adicionales */
+    body {
+      padding-top: 70px; /* Ajuste para el navbar fijo */
+      padding-bottom: 20px;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">CleanVip</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'lista_colaboradores' %}">Lista de Colaboradores</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'detalle_capacitacion' capacitacion_id %}">Detalle de Capacitación</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'lista_inscripciones' colaborador_id %}">Lista de Inscripciones</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'detalle_contrato' contrato_id %}">Detalle de Contrato</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'lista_evaluaciones' contrato_id %}">Lista de Evaluaciones</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'detalle_bonificacion' bonificacion_id %}">Detalle de Bonificación</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'lista_ausencias' colaborador_id %}">Lista de Ausencias</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'lista_metas' colaborador_id %}">Lista de Metas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'lista_seguimiento_metas' meta_id %}">Lista de Seguimiento de Metas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'lista_indicadores' %}">Lista de Indicadores</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <br><br>
+  <div class="container">
+    <h1 class="mt-4 mb-4">Bienvenido</h1>
+    <ul>
+      <li><a href="{% url 'lista_colaboradores' %}">Lista de Colaboradores</a></li>
+      <li><a href="{% url 'detalle_capacitacion' capacitacion_id %}">Detalle de Capacitación</a></li>
+      <li><a href="{% url 'lista_inscripciones' colaborador_id %}">Lista de Inscripciones</a></li>
+      <li><a href="{% url 'detalle_contrato' contrato_id %}">Detalle de Contrato</a></li>
+      <li><a href="{% url 'lista_evaluaciones' contrato_id %}">Lista de Evaluaciones</a></li>
+      <li><a href="{% url 'detalle_bonificacion' bonificacion_id %}">Detalle de Bonificación</a></li>
+      <li><a href="{% url 'lista_ausencias' colaborador_id %}">Lista de Ausencias</a></li>
+      <li><a href="{% url 'lista_metas' colaborador_id %}">Lista de Metas</a></li>
+      <li><a href="{% url 'lista_seguimiento_metas' meta_id %}">Lista de Seguimiento de Metas</a></li>
+      <li><a href="{% url 'lista_indicadores' %}">Lista de Indicadores</a></li>
+    </ul>
+  </div>
+
+  <!-- Bootstrap JS y dependencias opcionales si es necesario -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

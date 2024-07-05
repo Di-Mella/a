@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Seguimiento de Meta: {{ meta.titulo_descripcion }}</title>
+  </head>
+<body>
+  <h1>Seguimiento de Meta: {{ meta.titulo_descripcion }}</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Fecha de Actualización</th>
+        <th>Descripción del Progreso o Actualización</th>
+        <th>Notas o Comentarios Adicionales</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for seguimiento in meta.seguimiento_metas.all %}
+      <tr>
+        <td>{{ seguimiento.fecha }}</td>
+        <td>{{ seguimiento.descripcion_progreso }}</td>
+        <td>{{ seguimiento.notas_comentarios }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
+</html>
