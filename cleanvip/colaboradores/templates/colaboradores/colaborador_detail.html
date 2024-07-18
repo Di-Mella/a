@@ -1,0 +1,91 @@
+<!-- aplicaciones/colaboradores/templates/colaboradores/colaborador_detail.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ colaborador.nombre }}</title>
+</head>
+<body>
+    <!-- Navbar -->
+<!-- Navbar -->
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">CleanVip</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="{% url 'home' %}">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'colaboradores_list' %}">Lista de Colaboradores</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'capacitaciones_list' %}">Detalle de Capacitación</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'contratacion_list' %}">Lista de Contrataciones</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'evaluacion_list' %}">Lista de Evaluaciones</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'bonificacion_list' %}">Lista de Bonificaciones</a>
+            </li>
+            {% if user.is_authenticated %}
+            <p>Welcome, {{ user.username }}</p>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout' %}">Cerrar sesión</a>
+            </li>
+        {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">Iniciar sesión</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'registro' %}">Registrarse</a>
+            </li>
+        {% endif %}
+          </ul>
+          <!-- Menú de búsqueda -->
+          <form class="d-flex my-2 my-lg-0" role="search">
+            <input class="form-control me-2" type="search" placeholder="Buscar en CleanVip..." aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">BUSCAR</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </div>
+      <br><br>
+    <h1>{{ colaborador.nombre }} {{ colaborador.apellido_paterno }} {{ colaborador.apellido_materno }}</h1>
+    <p>RUT: {{ colaborador.rut }}</p>
+    <p>Fecha de nacimiento: {{ colaborador.fecha_nacimiento }}</p>
+    <p>Género: {{ colaborador.id_genero }}</p>
+    <p>Estado civil: {{ colaborador.estado_civil }}</p>
+    <p>Dirección: {{ colaborador.direccion }}</p>
+    <p>Comuna: {{ colaborador.comuna }}</p>
+    <p>Teléfono: {{ colaborador.telefono }}</p>
+    <p>Email: {{ colaborador.email }}</p>
+    <p>Cargo: {{ colaborador.cargo }}</p>
+    <p>Fecha de ingreso: {{ colaborador.fecha_ingreso }}</p>
+    <p>Sueldo base: {{ colaborador.sueldo_base }}</p>
+    <p>Departamento: {{ colaborador.departamento }}</p>
+    <h2>Capacitaciones</h2>
+    <ul>
+        {% for capacitacion in colaborador.capacitaciones.all %}
+            <li>{{ capacitacion.nombreCapacitacion }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'colaborador_update' colaborador.rut %}">Editar</a>
+    <form action="{% url 'colaborador_delete' colaborador.rut %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Eliminar</button>
+    </form>
+    <a href="{% url 'colaboradores_list' %}">Volver a la lista</a>
+</body>
+</html>

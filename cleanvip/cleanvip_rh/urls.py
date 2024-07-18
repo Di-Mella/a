@@ -1,18 +1,17 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from . import views
+from .views import home
 urlpatterns = [
-    path('home/',views.home, name= 'home'),
-    path('colaboradores/',views.lista_colaboradores, name='lista_colaboradores'),
-    path('capacitacion/',views.detalle_capacitacion, name='detalle_capacitacion'),
-    path('inscripciones/<int:colaborador_id>/',views.lista_inscripciones, name='lista_inscripciones'),
-    path('contrato/<int:pk>/',views.detalle_contrato, name='detalle_contrato'),
-    path('evaluaciones/<int:contrato_id>/',views.lista_evaluaciones, name='lista_evaluaciones'),
-    path('bonificacion/<int:pk>/',views.detalle_bonificacion, name='detalle_bonificacion'),
-    path('ausencias/<int:colaborador_id>/',views.lista_ausencias, name='lista_ausencias'),
-    path('metas/<int:colaborador_id>/',views.lista_metas, name='lista_metas'),
-    path('seguimiento_metas/<int:meta_id>/',views.lista_seguimiento_metas, name='lista_seguimiento_metas'),
-    path('indicadores/',views.lista_indicadores, name='lista_indicadores'),
-    path('datos_indicador/<int:indicador_id>/', views.lista_datos_indicador, name='lista_datos_indicador'),
+    path('',views.home, name= 'home'),
+    path('registro',views.registro, name = 'registro'),
+    path('login',views.loginPage, name = 'login'),
+    path('logout',views.cerrar_sesion, name = 'logout'),
+    path('profile/<str:username>',views.profile, name= 'profile'),
+    path('profile_edit',views.profile_edit, name= 'profile_edit'),
+    path('colaboradores/', include('colaboradores.urls')),
+    path('contrataciones/', include('contrataciones.urls')),
+    path('bonificaciones/', include('bonificaciones.urls')),
+    path('evaluaciones/', include('bonificaciones.urls')),
 ]
 

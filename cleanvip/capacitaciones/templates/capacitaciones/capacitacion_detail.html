@@ -1,0 +1,80 @@
+<!-- aplicaciones/capacitaciones/templates/capacitaciones/capacitacion_detail.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ capacitacion.nombreCapacitacion }}</title>
+</head>
+<body>
+    <!-- Navbar -->
+<!-- Navbar -->
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">CleanVip</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="{% url 'home' %}">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'colaboradores_list' %}">Lista de Colaboradores</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'capacitaciones_list' %}">Detalle de Capacitación</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'contratacion_list' %}">Lista de Contrataciones</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'evaluacion_list' %}">Lista de Evaluaciones</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'bonificacion_list' %}">Lista de Bonificaciones</a>
+            </li>
+            {% if user.is_authenticated %}
+            <p>Welcome, {{ user.username }}</p>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout' %}">Cerrar sesión</a>
+            </li>
+        {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">Iniciar sesión</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'registro' %}">Registrarse</a>
+            </li>
+        {% endif %}
+          </ul>
+          <!-- Menú de búsqueda -->
+          <form class="d-flex my-2 my-lg-0" role="search">
+            <input class="form-control me-2" type="search" placeholder="Buscar en CleanVip..." aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">BUSCAR</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </div>
+  
+      <br><br>
+    <h1>{{ capacitacion.nombreCapacitacion }}</h1>
+    <p>{{ capacitacion.descripcion }}</p>
+    <p>Fecha de inicio: {{ capacitacion.fecha_inicio }}</p>
+    <p>Fecha de fin: {{ capacitacion.fecha_fin }}</p>
+    <p>Duración: {{ capacitacion.duracion }} horas</p>
+    <p>Organizador: {{ capacitacion.organizador }}</p>
+    <p>Costo: {{ capacitacion.costo }}</p>
+    <a href="{% url 'capacitacion_update' capacitacion.pk %}">Editar</a>
+    <form action="{% url 'capacitacion_delete' capacitacion.pk %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Eliminar</button>
+    </form>
+    <a href="{% url 'capacitaciones_list' %}">Volver a la lista</a>
+</body>
+</html>
